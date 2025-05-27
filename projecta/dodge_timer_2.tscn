@@ -1,0 +1,5 @@
+[gd_scene format=3 uid="uid://dcnu5birnh76t"]
+
+[node name="DodgeTimer2" type="Timer"]
+wait_time = 0.5
+one_shot = true

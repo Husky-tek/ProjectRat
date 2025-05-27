@@ -1,0 +1,30 @@
+[gd_scene load_steps=5 format=3 uid="uid://p04lagq5p77n"]
+
+[ext_resource type="Texture2D" uid="uid://7fw8ic5a4s6d" path="res://imageFiles/icon.svg" id="1_lkv4h"]
+[ext_resource type="Script" uid="uid://d1yqv5on1lmgy" path="res://scripts/playerchar.gd" id="1_rhdaj"]
+[ext_resource type="PackedScene" uid="uid://dcnu5birnh76t" path="res://dodge_timer_2.tscn" id="3_i6lxi"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rhdaj"]
+size = Vector2(129, 131)
+
+[node name="CharacterBody2D" type="CharacterBody2D"]
+script = ExtResource("1_rhdaj")
+
+[node name="Attacktimer" type="Timer" parent="."]
+wait_time = 0.107
+one_shot = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_lkv4h")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+light_mask = 8
+position = Vector2(1, 1)
+shape = SubResource("RectangleShape2D_rhdaj")
+
+[node name="Node2D" type="Node2D" parent="."]
+
+[node name="DodgeTimer2" parent="." instance=ExtResource("3_i6lxi")]
+
+[connection signal="timeout" from="Attacktimer" to="." method="_on_attacktimer_timeout"]
+[connection signal="timeout" from="DodgeTimer2" to="." method="_on_dodge_timer_2_timeout"]

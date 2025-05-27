@@ -1,0 +1,8 @@
+res://game.tscn
+res://scripts/playerchar.gd
+res://Prefabs/Platform.tscn
+res://Prefabs/playerchar.tscn
+res://blastzone.tscn
+res://Prefabs/hitbox.tscn
+res://Prefabs/enemy.tscn
+res://Prefabs/enemy.gd
