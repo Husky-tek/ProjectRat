@@ -1,3 +1,6 @@
 res://hitbox.tscn
 res://game.tscn
 res://scripts/enemy.gd
+res://scripts/enemychar.gd
+res://Prefabs/hitbox.tscn
+res://Prefabs/enemychar.tscn

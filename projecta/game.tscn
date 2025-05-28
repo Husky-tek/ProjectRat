@@ -24,7 +24,7 @@ limit_bottom = 500
 position_smoothing_enabled = true
 
 [node name="blastzone3" parent="." instance=ExtResource("3_feb5d")]
-position = Vector2(1169, 198)
+position = Vector2(1327, 163)
 scale = Vector2(6.04228, 5.29093)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="blastzone3"]
@@ -33,7 +33,7 @@ rotation = -1.5708
 shape = SubResource("WorldBoundaryShape2D_fc0e3")
 
 [node name="blastzone2" parent="." instance=ExtResource("3_feb5d")]
-position = Vector2(-560, 158)
+position = Vector2(-555, 163)
 rotation = 3.14159
 scale = Vector2(6.07876, -5.68917)
 
@@ -73,3 +73,4 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 text = "Bro if i dont  fucking get the hitboxes to work im blowing up someones house"
 tab_size = 24
+metadata/_edit_use_anchors_ = true
