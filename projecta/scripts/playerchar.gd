@@ -6,6 +6,7 @@ const JUMP_VELOCITY = -400.0
 var knockback = 0.0
 var defence = 0.0
 var attack = 0.0
+var speed = 0.0
 var critDmg = attack * 2
 var critRate = 0.0
 var jump_count = 0
@@ -14,8 +15,8 @@ var fast_fall = 0
 var lives = 3
 @onready var time = $DodgeTimer2
 @onready var atktime = $Attacktimer
-var hitboxnode = preload("res://Prefabs/hitbox.tscn")
-var instance = hitboxnode.instantiate()
+#spawn hitboxes
+
 
 
 enum States {IDLE,RUNNING,INAIR,DAMAGED,FASTFALL,CROUCH,DODGE}
@@ -118,11 +119,9 @@ func atk ():
 		print("what the fuck")
 			
 func Satk():
-	hit(position.x,position.y)
 	atktime.start()
 
-func hit(x,y):
-	add_child(instance)
+
 
 func jump():
 	if jump_Toggle:
@@ -147,12 +146,12 @@ func _on_dodge_timer_2_timeout() -> void:
 	pass # Replace with function body.
 
 
-func take_damage(damage):
+func take_damage(damage,knockback_force,attack_position):
 	knockback += damage
+	velocity = (global_position - attack_position).normallized()*knockback_force
 	pass
 
 func _on_attacktimer_timeout() -> void:
 	print("attack over")
-	remove_child(instance)
 	pass # Replace with function body.
  

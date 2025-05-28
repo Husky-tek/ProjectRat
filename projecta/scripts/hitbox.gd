@@ -1,12 +1,8 @@
-class_name hitbox
-extends CharacterBody2D
+extends Area2D
 
-const speed=1000
-@export var Projectile: PackedScene
+var damage = get_parent().attack
 
-var mynode = preload("res://Prefabs/hitbox.tscn")
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta) -> void:
-	position += transform.x * (speed * delta)
-	pass
+func _on_hitbox_body_entered(body: Node2D) -> void:
+	if body.has_method("take_damage"):
+		body.take_damage(damage)
+	pass # Replace with function body.

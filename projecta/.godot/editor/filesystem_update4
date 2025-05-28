@@ -1,1 +1,3 @@
-res://Prefabs/hitbox.tscn
+res://hitbox.tscn
+res://game.tscn
+res://scripts/enemy.gd
