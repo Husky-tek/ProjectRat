@@ -19,11 +19,12 @@ var fast_fall = 0
 var lives = 3
 @onready var time = $DodgeTimer2
 @onready var atktime = $Attacktimer
+
 #spawn hitboxes
 var MyNode = preload("res://characters/Rat/Hitboxs/hitbox.tscn")
+var instance = MyNode.instantiate()
 
-
-
+#player States
 enum States {IDLE,RUNNING,INAIR,DAMAGED,FASTFALL,CROUCH,DODGE}
 enum lookat {RIGHT,LEFT}
 enum action {IDLE, ATTACK, SPECIAL, MOVING}
@@ -124,7 +125,7 @@ func atk ():
 		print("what the fuck")
 			
 func Satk():
-	var instance = MyNode.instantiate()
+	
 	add_child(instance)
 	atktime.start()
 
@@ -160,5 +161,6 @@ func take_damage(damage,knockback_force,attack_position):
 
 func _on_attacktimer_timeout() -> void:
 	print("attack over")
+	remove_child(instance)
 	pass # Replace with function body.
  
