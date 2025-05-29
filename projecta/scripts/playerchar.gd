@@ -20,6 +20,7 @@ var lives = 3
 @onready var time = $DodgeTimer2
 @onready var atktime = $Attacktimer
 #spawn hitboxes
+var MyNode = preload("res://characters/Rat/Hitboxs/hitbox.tscn")
 
 
 
@@ -123,6 +124,8 @@ func atk ():
 		print("what the fuck")
 			
 func Satk():
+	var instance = MyNode.instantiate()
+	add_child(instance)
 	atktime.start()
 
 

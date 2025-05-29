@@ -87,8 +87,3 @@ dodge={
 [physics]
 
 2d/default_gravity=1541.98
-
-[rendering]
-
-renderer/rendering_method="gl_compatibility"
-renderer/rendering_method.mobile="gl_compatibility"
