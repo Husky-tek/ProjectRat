@@ -1,8 +1,12 @@
 extends CharacterBody2D
 
+@export var play:Player
 
-const SPEED = 300.0
-const JUMP_VELOCITY = -400.0
+var primary:attackClass
+
+
+var SPEED = 300.0
+var JUMP_VELOCITY = -400.0
 var knockback = 0.0
 var defence = 0.0
 var attack = 0.0

@@ -4,13 +4,14 @@
 [ext_resource type="Texture2D" uid="uid://8gl472f5uob5" path="res://imageFiles/evilDog.jpg" id="2_niem0"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xhm86"]
+size = Vector2(92, 92)
 
 [node name="Enemychar" type="CharacterBody2D"]
 script = ExtResource("1_31v7a")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_xhm86")
-
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(0.0800011, 0.0800005)
 texture = ExtResource("2_niem0")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_xhm86")

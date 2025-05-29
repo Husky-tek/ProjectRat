@@ -18,8 +18,8 @@ func _physics_process(delta: float) -> void:
 	if not is_on_floor():
 		velocity += get_gravity() * delta
 		currState = States.INAIR
-	else:
-		currState = States.WALKING
+	
 
 func take_damage(damage):
+	HP -= damage
 	currState = States.DAMAGED

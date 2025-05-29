@@ -4,3 +4,10 @@ res://scripts/enemy.gd
 res://scripts/enemychar.gd
 res://Prefabs/hitbox.tscn
 res://Prefabs/enemychar.tscn
+res://scripts/playerchar.gd
+res://dodge_timer_2.tscn
+res://ClassFiles/Player.gd
+res://blastzone.tscn
+res://ClassFiles/attackClass.gd
+res://Prefabs/playerchar.tscn
+res://scripts/hitbox.gd
