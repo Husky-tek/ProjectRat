@@ -21,7 +21,7 @@ var lives = 3
 @onready var atktime = $Attacktimer
 
 #spawn hitboxes
-var MyNode = preload("res://characters/Rat/Hitboxs/hitbox.tscn")
+var MyNode = preload("res://characters/Rat/Hitboxs/nair1.tscn")
 var instance = MyNode.instantiate()
 
 #player States
@@ -127,6 +127,7 @@ func atk ():
 func Satk():
 	
 	add_child(instance)
+	instance.play()
 	atktime.start()
 
 

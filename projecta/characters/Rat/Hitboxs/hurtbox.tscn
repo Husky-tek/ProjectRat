@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://dxtwjwk6sp6d6"]
 
-[ext_resource type="Script" uid="uid://bwfgjnhjad30n" path="res://scripts/hurtbox.gd" id="1_pafp8"]
-[ext_resource type="Texture2D" uid="uid://8gl472f5uob5" path="res://imageFiles/evilDog.jpg" id="2_vtxqs"]
+[ext_resource type="Script" uid="uid://bwfgjnhjad30n" path="res://scripts/hurtbox.gd" id="1_xil15"]
+[ext_resource type="Texture2D" uid="uid://8gl472f5uob5" path="res://imageFiles/evilDog.jpg" id="2_63mhe"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xrojb"]
 
@@ -10,11 +10,11 @@ position = Vector2(202, 0)
 scale = Vector2(11.1032, 9.2985)
 collision_layer = 5
 collision_mask = 5
-script = ExtResource("1_pafp8")
+script = ExtResource("1_xil15")
 
 [node name="hurtbox" type="Sprite2D" parent="."]
 scale = Vector2(0.0172713, 0.0161594)
-texture = ExtResource("2_vtxqs")
+texture = ExtResource("2_63mhe")
 
 [node name="hurtbox2" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_xrojb")

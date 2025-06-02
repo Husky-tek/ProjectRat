@@ -15,7 +15,6 @@ scale = Vector2(0.994621, 1)
 script = ExtResource("1_rhdaj")
 
 [node name="Attacktimer" type="Timer" parent="."]
-wait_time = 0.107
 one_shot = true
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

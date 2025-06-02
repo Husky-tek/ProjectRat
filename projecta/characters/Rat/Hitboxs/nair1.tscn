@@ -1,6 +1,6 @@
-[gd_scene load_steps=5 format=3 uid="uid://70s7e38acai4"]
+[gd_scene load_steps=5 format=3 uid="uid://h837kokaxiif"]
 
-[ext_resource type="PackedScene" uid="uid://dxtwjwk6sp6d6" path="res://characters/Rat/Hitboxs/hurtbox.tscn" id="1_oeycr"]
+[ext_resource type="PackedScene" uid="uid://dxtwjwk6sp6d6" path="res://characters/Rat/Hitboxs/hurtbox.tscn" id="1_70drr"]
 
 [sub_resource type="Animation" id="Animation_budja"]
 resource_name = "arial"
@@ -49,13 +49,12 @@ _data = {
 &"arial": SubResource("Animation_budja")
 }
 
-[node name="Nair" type="Node2D"]
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+[node name="AnimationPlayer" type="AnimationPlayer"]
 root_node = NodePath("hurtbox")
 libraries = {
 &"": SubResource("AnimationLibrary_28gjw")
 }
+autoplay = "arial"
 
-[node name="hurtbox" parent="AnimationPlayer" instance=ExtResource("1_oeycr")]
-position = Vector2(60, -42)
+[node name="hurtbox" parent="." instance=ExtResource("1_70drr")]
+position = Vector2(-72, 1)
