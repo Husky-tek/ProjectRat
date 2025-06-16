@@ -83,6 +83,7 @@ dodge={
 2d_render/layer_1="platforms"
 2d_render/layer_2="doors"
 2d_render/layer_3="blastzone"
+2d_physics/layer_1="EnemyHitbox"
 
 [physics]
 

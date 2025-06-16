@@ -77,4 +77,4 @@ tab_size = 24
 metadata/_edit_use_anchors_ = true
 
 [node name="Enemychar" parent="." instance=ExtResource("4_fc0e3")]
-position = Vector2(93, 125)
+position = Vector2(93, 119)

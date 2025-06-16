@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://w4qwvms8j5va"]
+
+[ext_resource type="Script" uid="uid://drtq1ycby0ugc" path="res://scripts/bulletScript.gd" id="1_joro0"]
+[ext_resource type="PackedScene" uid="uid://dxtwjwk6sp6d6" path="res://characters/Rat/Hitboxs/hitbox.tscn" id="2_6iivk"]
+
+[node name="CharacterBody2D" type="CharacterBody2D"]
+script = ExtResource("1_joro0")
+
+[node name="hitbox" parent="." instance=ExtResource("2_6iivk")]
+position = Vector2(3.05176e-05, -2)
+scale = Vector2(-4.19459, 0.727104)
+
+[connection signal="body_entered" from="hitbox" to="." method="_on_hitbox_body_entered"]

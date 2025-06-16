@@ -1,6 +1,5 @@
-[gd_scene load_steps=7 format=3 uid="uid://p04lagq5p77n"]
+[gd_scene load_steps=6 format=3 uid="uid://p04lagq5p77n"]
 
-[ext_resource type="Texture2D" uid="uid://7fw8ic5a4s6d" path="res://imageFiles/icon.svg" id="1_lkv4h"]
 [ext_resource type="Script" uid="uid://d1yqv5on1lmgy" path="res://scripts/playerchar.gd" id="1_rhdaj"]
 [ext_resource type="Script" uid="uid://bwfgjnhjad30n" path="res://scripts/hurtbox.gd" id="3_b01fr"]
 [ext_resource type="PackedScene" uid="uid://dcnu5birnh76t" path="res://dodge_timer_2.tscn" id="3_i6lxi"]
@@ -12,19 +11,22 @@ size = Vector2(129, 131)
 
 [node name="CharacterBody2D" type="CharacterBody2D"]
 scale = Vector2(0.994621, 1)
+collision_mask = 2
 script = ExtResource("1_rhdaj")
+
+[node name="Neutral" type="Node2D" parent="."]
+position = Vector2(-106.573, -1)
 
 [node name="Attacktimer" type="Timer" parent="."]
 one_shot = true
-
-[node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("1_lkv4h")
 
 [node name="Hitbox" type="Area2D" parent="."]
 collision_mask = 4
 script = ExtResource("3_b01fr")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+light_mask = 2
+visibility_layer = 2
 scale = Vector2(3.12, 2.93651)
 shape = SubResource("RectangleShape2D_i6lxi")
 debug_color = Color(0.967721, 0, 0.47246, 0.42)
@@ -38,6 +40,8 @@ shape = SubResource("RectangleShape2D_rhdaj")
 [node name="Node2D" type="Node2D" parent="."]
 
 [node name="DodgeTimer2" parent="." instance=ExtResource("3_i6lxi")]
+
+[node name="AnimationTree" type="AnimationTree" parent="."]
 
 [connection signal="timeout" from="Attacktimer" to="." method="_on_attacktimer_timeout"]
 [connection signal="timeout" from="DodgeTimer2" to="." method="_on_dodge_timer_2_timeout"]

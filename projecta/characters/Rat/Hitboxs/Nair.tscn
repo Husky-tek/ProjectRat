@@ -1,61 +1,109 @@
 [gd_scene load_steps=5 format=3 uid="uid://70s7e38acai4"]
 
-[ext_resource type="PackedScene" uid="uid://dxtwjwk6sp6d6" path="res://characters/Rat/Hitboxs/hurtbox.tscn" id="1_oeycr"]
+[ext_resource type="PackedScene" uid="uid://dxtwjwk6sp6d6" path="res://characters/Rat/Hitboxs/hitbox.tscn" id="1_oeycr"]
 
 [sub_resource type="Animation" id="Animation_budja"]
-resource_name = "arial"
-step = 0.0166667
-markers = [{
-"color": Color(1, 1, 1, 1),
-"name": &"new_marker",
-"time": 0.1
-}, {
-"color": Color(1, 1, 1, 1),
-"name": &"new_marker_2",
-"time": 0.15
-}]
+length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath(".:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0.100285, 0.117225, 0.133333, 0.15, 0.166667, 0.183333, 0.2, 0.216667, 0.233333, 0.25, 0.266667, 0.283333, 0.300856, 0.316441, 0.333381, 0.349644, 0.367261, 0.384879, 0.4, 0.416667, 0.433666, 0.45, 0.466667),
-"transitions": PackedFloat32Array(1.87858e-05, 0.000370048, 0.183011, 0.183011, 0.183011, 0.183011, 0.183011, 0.183011, 0.183011, 0.183011, 0.183011, 0.183011, 0.183011, 0.183011, 0.183011, 0.183011, 0.183011, 0.183011, 0.183011, 0.183011, 0.183011, 0.183011, 0.183011),
-"update": 0,
-"values": [Vector2(-72, 1), Vector2(-1.00002, -59), Vector2(120, 0), Vector2(1.52588e-05, 98), Vector2(-91, 69), Vector2(-113, -40), Vector2(85, -43), Vector2(123, 83), Vector2(17, 121), Vector2(-38, 127), Vector2(-55, 113), Vector2(-95, 76), Vector2(-114, 2), Vector2(-61, -65), Vector2(57, -65), Vector2(112, -27), Vector2(127, 59), Vector2(-11, 99), Vector2(-11, 99), Vector2(-88, 71), Vector2(-118, 42), Vector2(-78, -22), Vector2(-8, -8)]
-}
-
-[sub_resource type="Animation" id="Animation_dvs56"]
-length = 1.0
-step = 0.0166667
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:position")
+tracks/0/path = NodePath("hitbox:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(60, -42)]
+"values": [Vector2(17, -9)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:visibility_layer")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:light_mask")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
 }
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_28gjw"]
+[sub_resource type="Animation" id="Animation_oeycr"]
+resource_name = "new_animation"
+length = 0.750002
+step = 0.0166667
+markers = [{
+"color": Color(1, 1, 1, 1),
+"name": &"Start",
+"time": 0.101308
+}]
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("hitbox:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.101308, 0.136002, 0.196278, 0.266454),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(-45.457, -43.755), Vector2(-70.65, 22.477), Vector2(23.865, 79.846), Vector2(79.195, -33.655)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:visibility_layer")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.0999201, 0.360823),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [0, 4, 0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:light_mask")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.0999201, 0.360823),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [0, 4, 0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_dvs56"]
 _data = {
-&"RESET": SubResource("Animation_dvs56"),
-&"arial": SubResource("Animation_budja")
+&"RESET": SubResource("Animation_budja"),
+&"ariel": SubResource("Animation_oeycr")
 }
 
 [node name="Nair" type="Node2D"]
+light_mask = 0
+visibility_layer = 0
+scale = Vector2(3.03496, 2.74769)
+
+[node name="hitbox" parent="." instance=ExtResource("1_oeycr")]
+position = Vector2(17, -9)
+rotation = 3.14159
+scale = Vector2(2.63993, -2.04113)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-root_node = NodePath("hurtbox")
 libraries = {
-&"": SubResource("AnimationLibrary_28gjw")
+&"": SubResource("AnimationLibrary_dvs56")
 }
-
-[node name="hurtbox" parent="AnimationPlayer" instance=ExtResource("1_oeycr")]
-position = Vector2(60, -42)
