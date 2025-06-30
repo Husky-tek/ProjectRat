@@ -1,6 +1,5 @@
 extends CharacterBody2D
 
-@export var play:Player
 
 var primary:attackClass
 
@@ -142,7 +141,7 @@ func atk (In):
 				print("attck IDLE RIGHT")
 			lookat.LEFT:
 				print("atk IDLE LEFT")
-	if state == States.RUNNING:
+	elif state == States.RUNNING:
 		match look:
 			lookat.RIGHT:
 				print("attck RUNNING RIGHT")

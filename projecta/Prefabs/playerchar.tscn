@@ -1,24 +1,54 @@
-[gd_scene load_steps=6 format=3 uid="uid://p04lagq5p77n"]
+[gd_scene load_steps=10 format=3 uid="uid://p04lagq5p77n"]
 
 [ext_resource type="Script" uid="uid://d1yqv5on1lmgy" path="res://scripts/playerchar.gd" id="1_rhdaj"]
 [ext_resource type="Script" uid="uid://bwfgjnhjad30n" path="res://scripts/hurtbox.gd" id="3_b01fr"]
 [ext_resource type="PackedScene" uid="uid://dcnu5birnh76t" path="res://dodge_timer_2.tscn" id="3_i6lxi"]
+[ext_resource type="Texture2D" uid="uid://s2pg4d181yjb" path="res://characters/Rat/Sprites/Idle.png" id="4_b01fr"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qrbgr"]
+atlas = ExtResource("4_b01fr")
+region = Rect2(0, 0, 50, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dkpud"]
+atlas = ExtResource("4_b01fr")
+region = Rect2(50, 0, 50, 50)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_4y77g"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qrbgr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dkpud")
+}],
+"loop": true,
+"name": &"default",
+"speed": 3.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"new_animation",
+"speed": 5.0
+}]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_i6lxi"]
+size = Vector2(6.12267, 6.12973)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rhdaj"]
-size = Vector2(129, 131)
+size = Vector2(39.2109, 35)
 
 [node name="CharacterBody2D" type="CharacterBody2D"]
 scale = Vector2(0.994621, 1)
 collision_mask = 2
 script = ExtResource("1_rhdaj")
 
-[node name="Neutral" type="Node2D" parent="."]
-position = Vector2(-106.573, -1)
-
 [node name="Attacktimer" type="Timer" parent="."]
 one_shot = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_4y77g")
+frame_progress = 0.864885
 
 [node name="Hitbox" type="Area2D" parent="."]
 collision_mask = 4
@@ -27,6 +57,7 @@ script = ExtResource("3_b01fr")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
 light_mask = 2
 visibility_layer = 2
+position = Vector2(-0.502704, -7)
 scale = Vector2(3.12, 2.93651)
 shape = SubResource("RectangleShape2D_i6lxi")
 debug_color = Color(0.967721, 0, 0.47246, 0.42)
@@ -34,14 +65,18 @@ debug_color = Color(0.967721, 0, 0.47246, 0.42)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 light_mask = 8
 visibility_layer = 8
-position = Vector2(1, 1)
+position = Vector2(0, -2.5)
 shape = SubResource("RectangleShape2D_rhdaj")
 
 [node name="Node2D" type="Node2D" parent="."]
 
 [node name="DodgeTimer2" parent="." instance=ExtResource("3_i6lxi")]
 
-[node name="AnimationTree" type="AnimationTree" parent="."]
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+offset_left = -22.0
+offset_top = -66.0
+offset_right = 54.0
+offset_bottom = -26.0
 
 [connection signal="timeout" from="Attacktimer" to="." method="_on_attacktimer_timeout"]
 [connection signal="timeout" from="DodgeTimer2" to="." method="_on_dodge_timer_2_timeout"]

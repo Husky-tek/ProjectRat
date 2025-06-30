@@ -1,28 +1,14 @@
-[gd_scene load_steps=6 format=3 uid="uid://ccbcmo6jh5lgp"]
+[gd_scene load_steps=5 format=4 uid="uid://ccbcmo6jh5lgp"]
 
-[ext_resource type="PackedScene" uid="uid://ctgbtbf1i6i1s" path="res://Prefabs/Platform.tscn" id="1_80nbo"]
-[ext_resource type="PackedScene" uid="uid://p04lagq5p77n" path="res://Prefabs/playerchar.tscn" id="2_e2o6t"]
+[ext_resource type="PackedScene" uid="uid://cq20lkpltc7mc" path="res://PHfloorExpand.tscn" id="2_e2o6t"]
+[ext_resource type="PackedScene" uid="uid://p04lagq5p77n" path="res://Prefabs/playerchar.tscn" id="3_fc0e3"]
 [ext_resource type="PackedScene" uid="uid://dyya0w2axddyu" path="res://blastzone.tscn" id="3_feb5d"]
-[ext_resource type="PackedScene" uid="uid://cnqag6w7ouma6" path="res://Prefabs/enemychar.tscn" id="4_fc0e3"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_fc0e3"]
 normal = Vector2(1.8362e-06, -1)
 distance = -0.000274658
 
 [node name="Node2D" type="Node2D"]
-
-[node name="CharacterBody2D" parent="." instance=ExtResource("2_e2o6t")]
-position = Vector2(440, 133)
-rotation = 3.14159
-scale = Vector2(0.214286, -0.238095)
-collision_layer = 5
-collision_mask = 5
-
-[node name="Camera2D" type="Camera2D" parent="CharacterBody2D"]
-visibility_layer = 3
-scale = Vector2(0.7677, 0.738245)
-limit_bottom = 500
-position_smoothing_enabled = true
 
 [node name="blastzone3" parent="." instance=ExtResource("3_feb5d")]
 position = Vector2(1327, 163)
@@ -50,31 +36,13 @@ position = Vector2(290, 690)
 position = Vector2(-2, 7)
 shape = SubResource("WorldBoundaryShape2D_fc0e3")
 
-[node name="Node2D" parent="." instance=ExtResource("1_80nbo")]
-light_mask = 3
-visibility_layer = 3
-position = Vector2(115, 286)
-scale = Vector2(-1.7078, 1.69079)
+[node name="TileMapLayer" parent="." instance=ExtResource("2_e2o6t")]
+position = Vector2(-112, -48)
+tile_map_data = PackedByteArray("AAALAAAABAACABEAAAAMAP//BAACAA0AAAAPAAAABAAEABEAAAAPAP//BAAEAA0AAAAOAAAABAACABEAAAAOAP//BAACAA0AAAANAAAABAACABEAAAANAP//BAACAA0AAAAMAAAABAACABEAAAALAP//BAACAA0AAAAKAAAABAACABEAAAAKAP//BAACAA0AAAAJAAAABAACABEAAAAJAP//BAACAA0AAAAIAAAABAACABEAAAAIAP//BAACAA0AAAAHAAAABAACABEAAAAHAP//BAACAA0AAAAGAAAABAACABEAAAAGAP//BAACAA0AAAAFAAAABAACABEAAAAFAP//BAACAA0AAAAEAAAABAAAABEAAAAEAP//BAAAAA0AAAAdAP7/BAAQAAEAAAAcAP7/BAAOAAEAAAAbAP7/BAAOAAEAAAAaAP7/BAAOAAEAAAAZAP7/BAAOAAEAAAAYAP7/BAAOAAEAAAAXAP7/BAAOAAEAAAAWAP7/BAAOAAEAAAAVAP7/BAAOAAEAAAAUAP7/BAAOAAEAAAATAP7/BAAOAAEAAAASAP7/BAAMAAQAAAABAP//BAAEABEAAAABAP7/BAAEAA0AAAAAAP//BAACABEAAAAAAP7/BAACAA0AAAD/////BAACABEAAAD///7/BAACAA0AAAD+////BAACABEAAAD+//7/BAACAA0AAAD9////BAACABEAAAD9//7/BAACAA0AAAD8////BAACABEAAAD8//7/BAACAA0AAAD7////BAACABEAAAD7//7/BAACAA0AAAD6////BAAAABEAAAD6//7/BAAAAA0AAAAfAAIABAAQAAEAAAAeAAIABAAOAAEAAAAdAAIABAAOAAEAAAAcAAIABAAOAAEAAAAbAAIABAAOAAEAAAAaAAIABAAOAAEAAAAZAAIABAAMAAEAAAA=")
 
-[node name="Node2D2" parent="." instance=ExtResource("1_80nbo")]
-position = Vector2(304, 287)
-scale = Vector2(-1.28571, 0.666667)
+[node name="CharacterBody2D" parent="." instance=ExtResource("3_fc0e3")]
+position = Vector2(304, -120)
+collision_mask = 3
 
-[node name="Node2D3" parent="." instance=ExtResource("1_80nbo")]
-position = Vector2(530, 241)
-scale = Vector2(2.41249, 0.950442)
-
-[node name="RichTextLabel" type="RichTextLabel" parent="."]
-offset_left = 152.0
-offset_top = 52.0
-offset_right = 552.0
-offset_bottom = 141.0
-scale = Vector2(1, 1.04)
-size_flags_horizontal = 3
-size_flags_vertical = 3
-text = "Bro if i dont  fucking get the hitboxes to work im blowing up someones house"
-tab_size = 24
-metadata/_edit_use_anchors_ = true
-
-[node name="Enemychar" parent="." instance=ExtResource("4_fc0e3")]
-position = Vector2(93, 119)
+[node name="Camera2D" type="Camera2D" parent="CharacterBody2D"]
+position_smoothing_enabled = true

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://s2pg4d181yjb"
-path="res://.godot/imported/Idle-Sheet.png-9f65cc28db01d40c2def9500db342cb8.ctex"
+uid="uid://c8neng3hlfxir"
+path="res://.godot/imported/Nair.png-c439d741022150f3296357cf2a740eb8.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://characters/Rat/Sprites/Idle-Sheet.png"
-dest_files=["res://.godot/imported/Idle-Sheet.png-9f65cc28db01d40c2def9500db342cb8.ctex"]
+source_file="res://characters/Rat/Sprites/Nair.png"
+dest_files=["res://.godot/imported/Nair.png-c439d741022150f3296357cf2a740eb8.ctex"]
 
 [params]
 

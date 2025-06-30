@@ -5,7 +5,7 @@
 [ext_resource type="Script" uid="uid://bei6e828mb5nf" path="res://Prefabs/enemyCollision.gd" id="3_niem0"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xhm86"]
-size = Vector2(92, 92)
+size = Vector2(50, 48)
 
 [node name="Enemychar" type="CharacterBody2D"]
 collision_layer = 5
@@ -13,10 +13,12 @@ collision_mask = 5
 script = ExtResource("1_31v7a")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(0.0800011, 0.0800005)
+position = Vector2(1.90735e-06, -1)
+scale = Vector2(0.0432526, 0.0415225)
 texture = ExtResource("2_niem0")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 light_mask = 4
+position = Vector2(0, -1)
 shape = SubResource("RectangleShape2D_xhm86")
 script = ExtResource("3_niem0")
