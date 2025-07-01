@@ -49,9 +49,10 @@ func _physics_process(delta: float) -> void:
 	else:
 		state = States.IDLE
 	
-	# Start of inputs
-	if Input.is_action_pressed("ui_down") and is_on_floor():
-		state = States.CROUCH
+	# ===============================Start of inputs=======================================
+	if Input.is_action_pressed("ui_down"):
+		if is_on_floor():
+			state = States.CROUCH
 		DInput = moveInput.DOWN
 	if Input.is_action_just_released("ui_down"):
 		state = States.IDLE
@@ -72,12 +73,10 @@ func _physics_process(delta: float) -> void:
 	if Input.is_action_just_released("ui_up"):
 		DInput = moveInput.NONE
 	
-	#end of inputs
+	#=========================================end of inputs========================================
 	
 	if Input.is_action_just_pressed("Attack_control"):
-		if DInput == moveInput.DOWN:
-			if state == States.INAIR:
-				print("lmao")
+		atk()
 		currAction = action.ATTACK
 	
 	if Input.is_action_just_pressed("Special_Attack_control"):
@@ -101,7 +100,6 @@ func _physics_process(delta: float) -> void:
 	if is_on_floor():
 		jump_Toggle = true
 		jump_count = 0
-		state = States.IDLE
 		
 	
 	
@@ -132,7 +130,7 @@ func _physics_process(delta: float) -> void:
 
 	move_and_slide()
 	
-func atk (In):
+func atk ():
 	#TODO: TRY TO FIND A WAY FOR PLAYERS TO HAVE BUTTON COMBOS
 	if state == States.IDLE:
 		match look:
@@ -147,16 +145,19 @@ func atk (In):
 			lookat.LEFT:
 				print("atk RUNNING LEFT")
 	elif state == States.CROUCH:
-			match look:
-				lookat.RIGHT:
-					print("atk CROUCH RIGHT")
-				lookat.LEFT:
-					print("atk CROUCH LEFT")
+		match look:
+			lookat.RIGHT:
+				print("atk CROUCH RIGHT")
+			lookat.LEFT:
+				print("atk CROUCH LEFT")
 	elif state == States.INAIR:
-		add_child(Nair)
-		var arial = Nair.get_node("AnimationPlayer")
-		arial.play("ariel")
-		atktime.start()
+		if DInput == moveInput.DOWN:
+			print("dair")
+		else:
+			add_child(Nair)
+			var arial = Nair.get_node("AnimationPlayer")
+			arial.play("ariel")
+	
 	
 	else:
 		print("what the fuck")
@@ -167,21 +168,15 @@ func Satk():
 	elif state == States.IDLE or state == States.RUNNING:
 		match look:
 			lookat.RIGHT:
-				print("Satk CROUCH RIGHT")
+				print("Satk RIGHT")
 			lookat.LEFT:
-				print("Satk CROUCH LEFT")
+				print("Satk LEFT")
 	
-
-
 
 func jump():
 	if jump_Toggle:
 		velocity.y = JUMP_VELOCITY
 		jump_count += 1
-	if Input.is_action_just_released("ui_accept"):
-		print("released")
-		if velocity.y < -50:
-			velocity.y  = -50
 
 func dodge():
 	if time.time_left == 0:
