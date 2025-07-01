@@ -46,32 +46,39 @@ func _physics_process(delta: float) -> void:
 	if not is_on_floor():
 		velocity += get_gravity() * delta
 		state = States.INAIR
+	else:
+		state = States.IDLE
 	
-	if Input.is_action_just_pressed("ui_down") and is_on_floor():
+	# Start of inputs
+	if Input.is_action_pressed("ui_down") and is_on_floor():
 		state = States.CROUCH
 		DInput = moveInput.DOWN
 	if Input.is_action_just_released("ui_down"):
 		state = States.IDLE
 		DInput = moveInput.NONE
 		
-	if Input.is_action_just_pressed("ui_left"):
+	if Input.is_action_pressed("ui_left"):
 		DInput = moveInput.LEFT
 	if Input.is_action_just_released("ui_left"):
 		DInput = moveInput.NONE
 		
-	if Input.is_action_just_pressed("ui_right"):
+	if Input.is_action_pressed("ui_right"):
 		DInput = moveInput.RIGHT
 	if Input.is_action_just_released("ui_right"):
 		DInput = moveInput.NONE
 	
-	if Input.is_action_just_pressed("ui_up"):
+	if Input.is_action_pressed("ui_up"):
 		DInput = moveInput.UP
 	if Input.is_action_just_released("ui_up"):
 		DInput = moveInput.NONE
 	
+	#end of inputs
+	
 	if Input.is_action_just_pressed("Attack_control"):
+		if DInput == moveInput.DOWN:
+			if state == States.INAIR:
+				print("lmao")
 		currAction = action.ATTACK
-		atk(DInput)
 	
 	if Input.is_action_just_pressed("Special_Attack_control"):
 		Satk()
@@ -97,15 +104,9 @@ func _physics_process(delta: float) -> void:
 		state = States.IDLE
 		
 	
-
-	if  Input.is_action_just_pressed("ui_down") and not is_on_floor():
-		velocity.y = 350
 	
 	
 		
-
-	# Get the input direction and handle the movement/deceleration.
-	# As good practice, you should replace UI actions with custom gameplay actions.
 	var direction := Input.get_axis("ui_left", "ui_right")
 	if direction:
 		state = States.RUNNING
@@ -122,14 +123,12 @@ func _physics_process(delta: float) -> void:
 	else:
 		if Input.is_action_just_released("ui_left") or  Input.is_action_just_released("ui_right") :
 			state = States.IDLE
+			DInput = moveInput.NONE
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 		
 	
 	
 	
-	if state == States.INAIR:
-		if DInput == moveInput.DOWN:
-			print("Dair")
 
 	move_and_slide()
 	
