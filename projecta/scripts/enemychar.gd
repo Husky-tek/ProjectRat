@@ -20,7 +20,7 @@ func _physics_process(delta: float) -> void:
 		currState = States.INAIR
 	move_and_slide()
 
-func take_damage(damage):
+func take_damage(damage, attack_position):
 	HP -= damage
 	currState = States.DAMAGED
-	#velocity = (global_position - attack_position).normallized()*knockback_force
+	velocity = (global_position - attack_position)

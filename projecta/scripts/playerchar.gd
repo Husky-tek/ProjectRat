@@ -20,20 +20,16 @@ var lives = 3
 @onready var atktime = $Attacktimer
 
 #spawn hitboxes
-var Neutral = preload("res://characters/Rat/Hitboxs/Neutral.tscn")
-var neutral = Neutral.instantiate()
 
-var nair = preload("res://characters/Rat/Hitboxs/Nair.tscn")
-var Nair = nair.instantiate()
 
-var Nspecial = preload("res://characters/Rat/Hitboxs/bullet.tscn")
-var nSpecial = Nspecial.instantiate()
+#set animations
+@onready var Anim = $Node2D2/AnimationPlayer
 
 #player States
-enum States {IDLE,RUNNING,INAIR,DAMAGED,CROUCH,DODGE,LEDGE}
+enum States {IDLE,RUNNING,INAIR,DAMAGED,CROUCH,DODGE,LEDGE,STUNNED}
 enum lookat {RIGHT,LEFT}
 enum moveInput {RIGHT,LEFT,UP,DOWN,NONE}
-enum action {IDLE, ATTACK, SPECIAL, MOVING}
+enum action {IDLE, ATTACK, SPECIAL, MOVING,DODGE}
 
 var look = lookat.RIGHT
 var state = States.IDLE
@@ -41,7 +37,14 @@ var currAction = action.IDLE
 var DInput = moveInput.NONE
 
 
+
+
 func _physics_process(delta: float) -> void:
+	if currAction == action.IDLE or state == States.IDLE:
+		Anim.play("Idle")
+	elif currAction == action.MOVING:
+		Anim.play("Moving")
+		
 	# Add the gravity.
 	if not is_on_floor():
 		velocity += get_gravity() * delta
@@ -73,18 +76,23 @@ func _physics_process(delta: float) -> void:
 	if Input.is_action_just_released("ui_up"):
 		DInput = moveInput.NONE
 	
-	#=========================================end of inputs========================================
-	
 	if Input.is_action_just_pressed("Attack_control"):
-		atk()
 		currAction = action.ATTACK
+		atk()
 	
 	if Input.is_action_just_pressed("Special_Attack_control"):
+		currAction = action.SPECIAL
 		Satk()
-	
+		
 	if Input.is_action_just_pressed("dodge"):
+		currAction = action.DODGE
+		state = States.DODGE
 		dodge()
 		
+	
+	#=========================================end of inputs========================================
+	
+	
 	
 	if Input.is_action_pressed("ui_down") and is_on_floor():
 		state = States.CROUCH
@@ -123,55 +131,57 @@ func _physics_process(delta: float) -> void:
 			state = States.IDLE
 			DInput = moveInput.NONE
 		velocity.x = move_toward(velocity.x, 0, SPEED)
-		
-	
-	
-	
 
 	move_and_slide()
+
+#=======================================================================
 	
 func atk ():
 	#TODO: TRY TO FIND A WAY FOR PLAYERS TO HAVE BUTTON COMBOS
-	if state == States.IDLE:
-		match look:
-			lookat.RIGHT:
-				print("attck IDLE RIGHT")
-			lookat.LEFT:
-				print("atk IDLE LEFT")
-	elif state == States.RUNNING:
-		match look:
-			lookat.RIGHT:
-				print("attck RUNNING RIGHT")
-			lookat.LEFT:
-				print("atk RUNNING LEFT")
-	elif state == States.CROUCH:
-		match look:
-			lookat.RIGHT:
-				print("atk CROUCH RIGHT")
-			lookat.LEFT:
-				print("atk CROUCH LEFT")
+	if state == States.IDLE or state == States.CROUCH:
+		neutral()
 	elif state == States.INAIR:
 		if DInput == moveInput.DOWN:
-			print("dair")
+			downAir()
 		else:
-			add_child(Nair)
-			var arial = Nair.get_node("AnimationPlayer")
-			arial.play("ariel")
-	
-	
+			nAir()
 	else:
 		print("what the fuck")
 			
 func Satk():
-	if state == States.CROUCH:
-		print("bomb")
-	elif state == States.IDLE or state == States.RUNNING:
-		match look:
-			lookat.RIGHT:
-				print("Satk RIGHT")
-			lookat.LEFT:
-				print("Satk LEFT")
+	if DInput == moveInput.DOWN:
+		downSpecial()
+	elif DInput == moveInput.NONE:
+		Special()
+	elif DInput == moveInput.UP:
+		upSpecial()
+	elif DInput == moveInput.RIGHT or DInput == moveInput.LEFT:
+		sideSpecial()
+		
+#=================Attack functions====================
+
+func neutral():
+	print("neutral")
+
+func nAir():
+	print("nAir")
+
+func downAir():
+	print("dAir")
+
+func Special():
+	print("Special")
+
+func upSpecial():
+	print("USpecial")
+
+func downSpecial():
+	print("DSpecial")
 	
+func sideSpecial():
+	print("SSpecial")
+	
+#=====================================================
 
 func jump():
 	if jump_Toggle:
@@ -194,11 +204,9 @@ func _on_dodge_timer_2_timeout() -> void:
 
 func take_damage(damage,knockback_force,attack_position):
 	knockback += damage
-	velocity = (global_position - attack_position).normallized()*knockback_force
+	velocity = (global_position - attack_position)*knockback_force
+	print(velocity)
 	pass
 
-func _on_attacktimer_timeout() -> void:
-	print("attack over")
-	remove_child(Nair)
-	pass # Replace with function body.
+
  

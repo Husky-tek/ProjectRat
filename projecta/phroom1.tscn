@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=4 uid="uid://d3ely0y4r4atk"]
+
+[ext_resource type="PackedScene" uid="uid://cq20lkpltc7mc" path="res://PHfloorExpand.tscn" id="1_r4nmo"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="TileMapLayer" parent="." instance=ExtResource("1_r4nmo")]
+tile_map_data = PackedByteArray("AAAFAP7/BAAJAA0AAAAAAP//BAAOAAEAAAABAP//BAAOAAEAAAACAP//BAAOAAEAAAADAP//BAAOAAEAAAAEAP//BAAHAA8AAAAFAP//BAAJAA8AAAAGAP3/BAAEABQAAAAHAPz/BAAEABQAAAAIAPz/BAAVAA0AAAAJAPz/BAAGAAoAAAAKAPz/BAAGAAoAAAALAPz/BAAGAAoAAAANAP7/BAAOAAEAAAAMAP7/BAAMAAEAAAAOAP7/BAAOAAEAAAAPAP7/BAAOAAEAAAAQAP7/BAAOAAQAAAA=")

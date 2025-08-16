@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://cnqag6w7ouma6"]
 
 [ext_resource type="Script" uid="uid://n2y0lpxddebx" path="res://scripts/enemychar.gd" id="1_31v7a"]
-[ext_resource type="Texture2D" uid="uid://8gl472f5uob5" path="res://imageFiles/evilDog.jpg" id="2_niem0"]
+[ext_resource type="Texture2D" uid="uid://8gl472f5uob5" path="res://evilDog.jpg" id="2_niem0"]
 [ext_resource type="Script" uid="uid://bei6e828mb5nf" path="res://Prefabs/enemyCollision.gd" id="3_niem0"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xhm86"]

@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://8gl472f5uob5"
-path="res://.godot/imported/evilDog.jpg-0d46a7248013d6a95aee4b54574a4d25.ctex"
+path="res://.godot/imported/evilDog.jpg-19a60bc0c83744a4d5b37ab19da2047a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://imageFiles/evilDog.jpg"
-dest_files=["res://.godot/imported/evilDog.jpg-0d46a7248013d6a95aee4b54574a4d25.ctex"]
+source_file="res://evilDog.jpg"
+dest_files=["res://.godot/imported/evilDog.jpg-19a60bc0c83744a4d5b37ab19da2047a.ctex"]
 
 [params]
 
